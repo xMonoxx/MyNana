@@ -12,7 +12,6 @@ font-family:Tajawal, sans-serif;
 background:#0e0e12;
 color:white;
 text-align:center;
-overflow-x:hidden;
 }
 
 .hero{
@@ -136,25 +135,28 @@ tu eres mi vida
 </div>
 </div>
 
-<iframe id="ytplayer"
-    width="0"
-    height="0"
-    src="https://www.youtube.com/embed/NB7WuqWzDhw?start=42&autoplay=1&loop=1&playlist=NB7WuqWzDhw"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-></iframe>
+
 
 
 <script>
+
 function start(){
-document.getElementById("content").style.display="block";
-var audio=document.getElementById("song");
-audio.currentTime=41;
-audio.play();
+    document.getElementById("content").style.display="block";
+
+    // منع إنشاء أكثر من مشغل
+    if(!document.getElementById("ytplayer")){
+        var iframe = document.createElement("iframe");
+        iframe.id = "ytplayer";
+        iframe.width = "0";
+        iframe.height = "0";
+        iframe.src = "https://www.youtube.com/embed/NB7WuqWzDhw?start=41&autoplay=1&loop=1&playlist=NB7WuqWzDhw";
+        iframe.allow = "autoplay";
+        document.body.appendChild(iframe);
+    }
 }
 
 function secret(){
-document.getElementById("secretText").style.display="block";
+    document.getElementById("secretText").style.display="block";
 }
 
 // counter
@@ -171,5 +173,6 @@ document.getElementById("counter").innerHTML=
 
 </body>
 </html>
+
 
 
