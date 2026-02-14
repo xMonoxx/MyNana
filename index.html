@@ -250,21 +250,29 @@ var text = `من 20 أكتوبر 2025
 انتي حياتي وملكتي الصغيرة،
 حقتي بس أنا.
 
-<span class="highlight">Cara Mia</span>
-tu eres mi vida 🤍
-
+Cara Mia
+tu eres mi vida 🤍`;
 
 
 var i = 0;
+
 function typeWriter(){
     if(i <= text.length){
-        document.getElementById("typingText").innerHTML = text.substring(0,i);
+        document.getElementById("typingText").innerText = text.substring(0,i);
         i++;
         setTimeout(typeWriter,30);
+    } else {
+        highlightCaraMia();
     }
 }
-
 typeWriter();
+
+function highlightCaraMia(){
+    var el = document.getElementById("typingText");
+    el.innerHTML = el.innerHTML.replace("Cara Mia",
+        "<span class='highlight'>Cara Mia</span>");
+}
+
 
 // عداد الأيام
 var startDate=new Date("2025-12-19").getTime();
@@ -323,6 +331,7 @@ setInterval(createHeart,500);
 
 </body>
 </html>
+
 
 
 
