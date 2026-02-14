@@ -189,27 +189,21 @@ function start(){
     document.getElementById("content").style.display="block";
     document.getElementById("content").scrollIntoView({behavior:"smooth"});
 }
-// تشغيل الأغنية بعد ثانيتين من أول تفاعل
-// تشغيل الأغنية بعد ثانيتين من أول ضغطة
-var musicStarted = false;
+// تشغيل الأغنية تلقائي بعد ثانيتين
+window.addEventListener("load", function(){
 
-function playMusic(){
-    if(!musicStarted){
-        musicStarted = true;
+    setTimeout(function(){
+        var iframe = document.createElement("iframe");
+        iframe.id = "ytplayer";
+        iframe.width = "0";
+        iframe.height = "0";
+        iframe.src = "https://www.youtube.com/embed/NB7WuqWzDhw?start=42&autoplay=1&loop=1&playlist=NB7WuqWzDhw";
+        iframe.allow = "autoplay; encrypted-media";
+        document.body.appendChild(iframe);
+    },2000);
 
-        setTimeout(function(){
-            var iframe = document.createElement("iframe");
-            iframe.id = "ytplayer";
-            iframe.width = "0";
-            iframe.height = "0";
-            iframe.src = "https://www.youtube.com/embed/NB7WuqWzDhw?start=42&autoplay=1&loop=1&playlist=NB7WuqWzDhw";
-            iframe.allow = "autoplay; encrypted-media";
-            document.body.appendChild(iframe);
-        },2000);
-    }
-}
+});
 
-document.addEventListener("click", playMusic);
 
 // كتابة حرف حرف
 var text = `من 20 أكتوبر 2025
@@ -338,6 +332,7 @@ setInterval(createHeart,500);
 
 </body>
 </html>
+
 
 
 
