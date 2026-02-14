@@ -12,16 +12,21 @@ font-family:Tajawal, sans-serif;
 background:#0e0e12;
 color:white;
 text-align:center;
+overflow-x:hidden;
+overflow-y:auto;
+scroll-behavior:smooth;
 }
 
+
 .hero{
-height:100vh;
+min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 padding:20px;
 }
+
 
 h1{font-size:42px;}
 p{font-size:20px;max-width:500px;line-height:1.9;}
@@ -149,7 +154,7 @@ function start(){
         iframe.id = "ytplayer";
         iframe.width = "0";
         iframe.height = "0";
-        iframe.src = "https://www.youtube.com/embed/NB7WuqWzDhw?start=41&autoplay=1&loop=1&playlist=NB7WuqWzDhw";
+        iframe.src = "https://www.youtube.com/embed/NB7WuqWzDhw?start=42&autoplay=1&loop=1&playlist=NB7WuqWzDhw";
         iframe.allow = "autoplay";
         document.body.appendChild(iframe);
     }
@@ -173,6 +178,7 @@ document.getElementById("counter").innerHTML=
 
 </body>
 </html>
+
 
 
 
