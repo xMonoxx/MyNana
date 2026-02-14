@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إلى سلطانتي 🤍</title>
+
+<style>
+body{
+margin:0;
+font-family:Tajawal, sans-serif;
+background:#0e0e12;
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+h1{font-size:42px;}
+p{font-size:20px;max-width:500px;line-height:1.9;}
+
+button{
+margin-top:30px;
+padding:15px 35px;
+border:none;
+border-radius:40px;
+background:#ff6b8a;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+.gallery{
+display:flex;
+overflow:auto;
+gap:20px;
+padding:30px;
+}
+
+.gallery img{
+height:420px;
+border-radius:20px;
+}
+
+.hidden{display:none;}
+
+.count{
+font-size:24px;
+margin-top:20px;
+color:#ff9fb3;
+}
+
+.secret{
+margin-top:50px;
+font-size:18px;
+opacity:.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+<h1>إلى سلطانتي</h1>
+
+<p>
+من 20 أكتوبر 2025  
+وانتي سرتي أجمل شيء في ايامي.  
+المسافة بيننا بس رقم،  
+لكن وجودك في قلبي شيء ثابت.
+
+دايما ابغا اكون الشخص الاول اللي يجي في بالك، اللي دايما ترجعيله
+اكون سند لك زي ما اتني دايما سند لي وتكوني في صفي
+انا من دونك احس بالفراغ شي ناقص فيا،
+اتمنى اني ما اجرب هذا الفراغ وتكوني دايما جمبي
+سواءا احنا فرحانين، زعلانين،مبسوطين،كئيبين،
+اتمنى نكون سوا في كل اللحظات،
+انا عارف لو اني س شفت ابتسامتك كل همومي تختفي وتجيني راحة،
+انتي مصدر راحتي وسعادتي
+واتمنى اني اكون مصدر سعادتك زي ما انتي مصدر سعادتي
+
+انا عارف اني كئيب ومزعج 
+لكن, انا دايما احول بكل قوتي اني اسعدك وانا فخور بهذا الشي 
+لانه سعادتك من سعادتي
+وانا دايما راح اكون موجود لك
+
+انا احبك حب كبير مو طبيعي، شي ما اقدر اوصفه بالكلمات.
+احبك ناناتي، وراح احارب عشان اكون جمبك ودرعك 
+انتي حياتي وملكتي الصغيرة، حقتي بس انا 
+
+Cara Mia
+-
+tu eres mi vida
+ 
+</p>
+
+<button onclick="start()">اضغطي هنا</button>
+
+<div id="content" class="hidden">
+
+<div class="gallery">
+<img src="1.jpg">
+<img src="2.jpg">
+<img src="3.jpg">
+<img src="4.jpg">
+<img src="5.jpg">
+<img src="6.jpg">
+</div>
+
+<div class="count" id="counter"></div>
+
+<button onclick="secret()">رسالة صغيرة لك</button>
+
+<div id="secretText" class="secret hidden">
+أحب هدوءك،  
+طريقتك،  
+عصبيتك،
+ابتسامتك،
+وجودك. 
+ 
+
+ما ابفا العالم كله…  
+بس ابغاكي انتي 
+انتي عالمي كله.
+— محمد - مو
+</div>
+
+</div>
+</div>
+
+<audio id="song">
+<source src="https://cdn.pixabay.com/audio/2023/09/06/audio_1c.mp3" type="audio/mp3">
+</audio>
+
+<script>
+function start(){
+document.getElementById("content").style.display="block";
+var audio=document.getElementById("song");
+audio.currentTime=41;
+audio.play();
+}
+
+function secret(){
+document.getElementById("secretText").style.display="block";
+}
+
+// counter
+var startDate=new Date("2025-12-19").getTime();
+setInterval(()=>{
+var now=new Date().getTime();
+var diff=now-startDate;
+
+var days=Math.floor(diff/(1000*60*60*24));
+document.getElementById("counter").innerHTML=
+"من أول لقاء لنا: "+days+" يوم 🤍";
+},1000);
+</script>
+
+</body>
+</html>
