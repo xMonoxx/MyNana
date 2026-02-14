@@ -190,6 +190,7 @@ function start(){
     document.getElementById("content").scrollIntoView({behavior:"smooth"});
 }
 // تشغيل الأغنية بعد ثانيتين من أول تفاعل
+// تشغيل الأغنية بعد ثانيتين من أول ضغطة
 var musicStarted = false;
 
 function playMusic(){
@@ -209,21 +210,6 @@ function playMusic(){
 }
 
 document.addEventListener("click", playMusic);
-
-    if(!document.getElementById("ytplayer")){
-        var iframe = document.createElement("iframe");
-        iframe.id = "ytplayer";
-        iframe.width = "0";
-        iframe.height = "0";
-        iframe.src = "https://www.youtube.com/embed/NB7WuqWzDhw?start=42&autoplay=1&loop=1&playlist=NB7WuqWzDhw";
-        iframe.allow = "autoplay; encrypted-media";
-        document.body.appendChild(iframe);
-    }
-}
-
-function secret(){
-    document.getElementById("secretText").style.display="block";
-}
 
 // كتابة حرف حرف
 var text = `من 20 أكتوبر 2025
@@ -352,6 +338,7 @@ setInterval(createHeart,500);
 
 </body>
 </html>
+
 
 
 
