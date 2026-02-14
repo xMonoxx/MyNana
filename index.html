@@ -204,6 +204,13 @@ window.addEventListener("load", function(){
 
 });
 
+function secret(){
+    var el = document.getElementById("secretText");
+    if(el){
+        el.style.display = "block";
+        el.scrollIntoView({behavior:"smooth"});
+    }
+}
 
 // كتابة حرف حرف
 var text = `من 20 أكتوبر 2025
@@ -332,6 +339,7 @@ setInterval(createHeart,500);
 
 </body>
 </html>
+
 
 
 
