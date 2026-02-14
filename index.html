@@ -9,7 +9,7 @@
 body{
 margin:0;
 font-family:Tajawal, sans-serif;
-background:#0e0e12;
+background:#3b2a22; /* بني دافئ */
 color:white;
 text-align:center;
 overflow-x:hidden;
@@ -17,6 +17,35 @@ overflow-y:auto;
 scroll-behavior:smooth;
 }
 
+/* القلوب بالخلفية */
+#hearts{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+color:rgba(255,182,193,0.7);
+font-size:20px;
+animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(100vh) scale(1);
+opacity:0;
+}
+10%{opacity:1;}
+100%{
+transform:translateY(-10vh) scale(1.5);
+opacity:0;
+}
+}
 
 .hero{
 min-height:100vh;
@@ -27,19 +56,24 @@ align-items:center;
 padding:20px;
 }
 
-
 h1{font-size:42px;}
-p{font-size:20px;max-width:500px;line-height:1.9;}
+p{font-size:20px;max-width:600px;line-height:1.9;white-space:pre-line;}
 
 button{
 margin-top:30px;
 padding:15px 35px;
 border:none;
 border-radius:40px;
-background:#ff6b8a;
+background:#d49a6a;
 color:white;
 font-size:18px;
 cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#c17f50;
+transform:scale(1.05);
 }
 
 .gallery{
@@ -52,6 +86,9 @@ padding:30px;
 .gallery img{
 height:420px;
 border-radius:20px;
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
 }
 
 .hidden{display:none;}
@@ -59,52 +96,41 @@ border-radius:20px;
 .count{
 font-size:24px;
 margin-top:20px;
-color:#ff9fb3;
+color:#ffd6b3;
 }
 
 .secret{
 margin-top:50px;
 font-size:18px;
 opacity:.9;
+white-space:pre-line;
+}
+
+#topBtn{
+position:fixed;
+bottom:30px;
+left:30px;
+padding:12px 18px;
+border:none;
+border-radius:50%;
+background:#d49a6a;
+color:white;
+font-size:18px;
+cursor:pointer;
+display:none;
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
 }
 </style>
 </head>
 
 <body>
 
+<div id="hearts"></div>
+
 <div class="hero">
 <h1>إلى سلطانتي</h1>
 
-<p>
-من 20 أكتوبر 2025  
-وانتي سرتي أجمل شيء في ايامي.  
-المسافة بيننا بس رقم،  
-لكن وجودك في قلبي شيء ثابت.
-
-دايما ابغا اكون الشخص الاول اللي يجي في بالك، اللي دايما ترجعيله
-اكون سند لك زي ما اتني دايما سند لي وتكوني في صفي
-انا من دونك احس بالفراغ شي ناقص فيا،
-اتمنى اني ما اجرب هذا الفراغ وتكوني دايما جمبي
-سواءا احنا فرحانين، زعلانين،مبسوطين،كئيبين،
-اتمنى نكون سوا في كل اللحظات،
-انا عارف لو اني س شفت ابتسامتك كل همومي تختفي وتجيني راحة،
-انتي مصدر راحتي وسعادتي
-واتمنى اني اكون مصدر سعادتك زي ما انتي مصدر سعادتي
-
-انا عارف اني كئيب ومزعج 
-لكن, انا دايما احول بكل قوتي اني اسعدك وانا فخور بهذا الشي 
-لانه سعادتك من سعادتي
-وانا دايما راح اكون موجود لك
-
-انا احبك حب كبير مو طبيعي، شي ما اقدر اوصفه بالكلمات.
-احبك ناناتي، وراح احارب عشان اكون جمبك ودرعك 
-انتي حياتي وملكتي الصغيرة، حقتي بس انا 
-
-Cara Mia
--
-tu eres mi vida
- 
-</p>
+<p id="typingText"></p>
 
 <button onclick="start()">اضغطي هنا</button>
 
@@ -124,38 +150,38 @@ tu eres mi vida
 <button onclick="secret()">رسالة صغيرة لك</button>
 
 <div id="secretText" class="secret hidden">
-أحب هدوءك،  
-طريقتك،  
+أحب هدوءك،
+طريقتك،
 عصبيتك،
 ابتسامتك،
-وجودك. 
- 
+وجودك.
 
-ما ابفا العالم كله…  
-بس ابغاكي انتي 
-انتي عالمي كله.
+ما أبغى العالم كله…
+بس أبغاكي انتي.
+انتي عالمي كله 🤎
+
 — محمد - مو
 </div>
 
 </div>
 </div>
 
-
-
+<button id="topBtn">↑</button>
 
 <script>
 
+// تشغيل الموقع + الموسيقى
 function start(){
     document.getElementById("content").style.display="block";
+    document.getElementById("content").scrollIntoView({behavior:"smooth"});
 
-    // منع إنشاء أكثر من مشغل
     if(!document.getElementById("ytplayer")){
         var iframe = document.createElement("iframe");
         iframe.id = "ytplayer";
         iframe.width = "0";
         iframe.height = "0";
         iframe.src = "https://www.youtube.com/embed/NB7WuqWzDhw?start=42&autoplay=1&loop=1&playlist=NB7WuqWzDhw";
-        iframe.allow = "autoplay";
+        iframe.allow = "autoplay; encrypted-media";
         document.body.appendChild(iframe);
     }
 }
@@ -164,16 +190,75 @@ function secret(){
     document.getElementById("secretText").style.display="block";
 }
 
-// counter
+// كتابة حرف حرف
+var text = `من 20 أكتوبر 2025
+وانتي صرتي أجمل شيء في أيامي...
+المسافة بيننا بس رقم،
+لكن وجودك في قلبي شيء ثابت 🤎`;
+
+var i = 0;
+function typeWriter(){
+    if(i < text.length){
+        document.getElementById("typingText").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter,40);
+    }
+}
+typeWriter();
+
+// عداد الأيام
 var startDate=new Date("2025-12-19").getTime();
 setInterval(()=>{
 var now=new Date().getTime();
 var diff=now-startDate;
-
 var days=Math.floor(diff/(1000*60*60*24));
 document.getElementById("counter").innerHTML=
-"من أول لقاء لنا: "+days+" يوم 🤍";
+"من أول لقاء لنا: "+days+" يوم 🤎";
 },1000);
+
+// حركة دخول الصور
+var images = document.querySelectorAll(".gallery img");
+function showImages(){
+    images.forEach(img=>{
+        var rect = img.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100){
+            img.style.opacity="1";
+            img.style.transform="translateY(0)";
+        }
+    });
+}
+window.addEventListener("scroll",showImages);
+
+// زر رجوع للأعلى
+var topBtn = document.getElementById("topBtn");
+window.onscroll = function(){
+    if(document.documentElement.scrollTop > 300){
+        topBtn.style.display="block";
+    }else{
+        topBtn.style.display="none";
+    }
+};
+topBtn.onclick = function(){
+    window.scrollTo({top:0,behavior:"smooth"});
+};
+
+// قلوب متحركة
+function createHeart(){
+    var heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "🤍";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random()*20) + "px";
+    heart.style.animationDuration = (4 + Math.random()*4) + "s";
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+setInterval(createHeart,500);
+
 </script>
 
 </body>
